@@ -61,8 +61,18 @@ T24OFSDataExtractor aims to revolutionize the way users interact with T24 by sim
 
 This comprehensive project description encapsulates the core functionalities, user benefits, target audience, technical aspects, future enhancements, and the overall impact of the T24OFSDataExtractor project. Adjustments can be made to emphasize specific details or accommodate additional aspects as needed.
 
-# run project commands
-python -m venv env
-env\Scripts\activate
-pip install -r requirements.txt
-python manage.py runserver
+# setup  project commands
+1- virtualenv env
+
+2- env\Scripts\activate
+
+3- pip install -r requirements.txt
+
+
+
+# run  project commands
+
+1- env\Scripts\activate
+
+2- python manage.py runserver
+

@@ -1,0 +1,137 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Generate Report from T24</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    /* Add your custom green styling here */
+    body {
+      background-color: #f0f0f0; /* Light grey background */
+    }
+    .green-title {
+      color: green;
+    }
+    /* Add more custom styles as needed */
+  </style>
+</head>
+<body>
+
+<div class="container mt-5">
+  <!-- Header with logo -->
+  <div class="row mb-4">
+    <div class="col-6">
+      <img src="{% static 'logo.png' %}" alt="Your Logo" height="50">
+    </div>
+    <div class="col-6 text-right">
+      <h2 class="green-title">Generate Report from T24</h2>
+    </div>
+  </div>
+
+<form id="myForm" method="POST">
+    {% csrf_token %}
+    <!-- Enquiry and Add Filter buttons -->
+    <div class="row mb-4">
+      <div class="col-md-6 mb-2">
+        <input type="text" class="form-control" placeholder="Enquiry" name="Enq" id="enquiryInput">
+      </div>
+      <div class="col-md-6 text-md-right">
+        <button type="button" class="btn btn-success" id="addFilterBtn"><img src="{% static 'filter.png' %}" width="30" height="30" ></button>
+      </div>
+    </div>
+
+    <!-- Filter inputs (initially hidden) -->
+    <div id="filterInputs">
+      <!-- JavaScript will dynamically add filter inputs here -->
+    </div>
+
+    <!-- Result field and Generate CV button -->
+    <div class="row mb-4">
+      <div class="col-md-9">
+        <input type="text" class="form-control" placeholder="Result" id="resultField" style="opacity: 0;" name="ofs_msg">
+      </div>
+      <div class="col-md-6 text-md-right">
+        <button type="button" class="btn btn-primary" id="generateCVBtn" style="background:#fff ; color:#007942 ; border:none ; font-weight: bold;" >Generate <img src="{% static 'csv.png' %}" width="24" height="24"></button>
+      </div>
+    </div>
+
+</form>
+
+<!-- Bootstrap JS and jQuery (for adding dynamic inputs) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    // Add Filter button click event
+    $('#addFilterBtn').on('click', function() {
+      // Create HTML for filter inputs
+      var filterInputs = `
+        <div class="row mb-2 filter-row">
+          <div class="col-md-4">
+            <input type="text" class="form-control column-name" placeholder="Column Name">
+          </div>
+          <div class="col-md-3" style="max-width: 121px;">
+            <select class="form-control operator">
+              <option value="EQ">=</option>
+              <option value="GT">></option>
+              <option value="GE">>=</option>
+              <option value="LT"><</option>
+              <option value="LE"><=</option>
+              <!-- Add more operators as needed -->
+            </select>
+          </div>
+          <div class="col-md-4">
+            <input type="text" class="form-control value" placeholder="Value">
+          </div>
+          <div class="col-md-1">
+            <button type="button" class="btn btn-danger removeFilter">X</button>
+          </div>
+        </div>
+      `;
+
+      // Append filter inputs to the container
+      $('#filterInputs').append(filterInputs);
+    });
+
+    // Remove Filter button click event
+    $(document).on('click', '.removeFilter', function() {
+      $(this).closest('.filter-row').remove();
+      generateResult();
+    });
+
+    // Enquiry input keyup event
+    $('#enquiryInput').on('keyup', function() {
+      generateResult();
+    });
+
+    // Generate CV button click event
+    $('#generateCVBtn').on('click', function() {
+      generateResult();
+      $('#myForm').submit()
+    });
+
+    // Function to generate result string
+    function generateResult() {
+      var enquiryValue = $('#enquiryInput').val();
+      var filters = [];
+      $('.filter-row').each(function() {
+        var columnName = $(this).find('.column-name').val();
+        var operator = $(this).find('.operator').val();
+        var value = $(this).find('.value').val();
+        filters.push(`,${columnName}:${operator}=${value}`);
+      });
+
+      var resultString = 'ENQUIRY.SELECT,,M.HISHAM/Moh@2023,' + enquiryValue + filters.join('');
+      console.log(resultString);
+      $('#resultField').val(resultString);
+
+    }
+  });
+</script>
+</div>
+</body>
+</html>

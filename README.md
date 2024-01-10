@@ -5,9 +5,16 @@ T24OFSDataExtractor: Streamlining T24 Data Retrieval via OFS Messages
 # Overview:
 T24OFSDataExtractor stands as a web-based solution catering to users interacting with Temenos T24, a vital banking software system, by harnessing the power of OFS (Open Financial Service) messages. The primary objective of this project is to simplify and automate the process of communicating with the T24 server, enabling effortless data extraction and convenient access to information residing within the T24 system.
 
-![screen1](https://github.com/Mohamedallam1233/T24_dataextract/assets/52450277/e8700309-373e-4475-b5da-ed87a285c4c8)
-![screen2](https://github.com/Mohamedallam1233/T24_dataextract/assets/52450277/51609f29-818f-42d6-bca2-4a979d70ce55)
-![screen3](https://github.com/Mohamedallam1233/T24_dataextract/assets/52450277/307ed683-f5b9-4565-a845-b90d852ed267)
+example 1 without filter
+![image](https://github.com/Mohamedallam1233/T24_dataextract/assets/52450277/db447e00-6923-4e59-bae3-31cda7758799)
+and this is excel result for it 
+![screen3](https://github.com/Mohamedallam1233/T24_dataextract/assets/52450277/c507d519-abbd-4762-a122-7ad86cff0d97)
+
+example 2 with filter
+![SCREEN 4](https://github.com/Mohamedallam1233/T24_dataextract/assets/52450277/042b1542-86b5-43a0-a633-983be726d63a)
+and this is excel result for it 
+![scrren 5](https://github.com/Mohamedallam1233/T24_dataextract/assets/52450277/9e554d2e-4996-4f08-a179-2ef23ba606cf)
+
 
 
 # Core Functionalities:

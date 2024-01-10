@@ -41,3 +41,9 @@ In future iterations, the project roadmap includes the integration of visualizat
 T24OFSDataExtractor aims to revolutionize the way users interact with T24 by simplifying data extraction via OFS messages. By offering an intuitive interface, robust connectivity, and streamlined processes, the project empowers users to effortlessly access and utilize T24 data to fulfill their diverse needs.
 
 This comprehensive project description encapsulates the core functionalities, user benefits, target audience, technical aspects, future enhancements, and the overall impact of the T24OFSDataExtractor project. Adjustments can be made to emphasize specific details or accommodate additional aspects as needed.
+
+# run project commands
+python -m venv env
+env\Scripts\activate
+pip install -r requirements.txt
+python manage.py runserver
